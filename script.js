@@ -19,7 +19,7 @@ const subtract = (numA, numB) => numA - numB;
 const multiply = (numA, numB) => numA * numB;
 
 const divide = (numA, numB) => {
-	if (numB == 0) return "Divisionby0";
+	if (numB == 0) return "div0err";
 	return parseFloat((numA / numB).toFixed(4));
 };
 
