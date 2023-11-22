@@ -1,3 +1,4 @@
+// Assignments
 const OPERATORS = ["+", "-", "/", "x"];
 let history = [];
 let numA;
@@ -11,20 +12,24 @@ const answerP = document.querySelector(".answer");
 const equalsBtn = document.querySelector(".equals");
 const clearBtn = document.querySelector(".clear");
 
+// Functions
 const add = (numA, numB) => numA + numB;
 const subtract = (numA, numB) => numA - numB;
-const divide = (numA, numB) => (numA / numB).toFixed(2);
 const multiply = (numA, numB) => numA * numB;
+
+const divide = (numA, numB) => {
+	if (numB == 0) return "Divisionby0";
+	return (numA / numB).toFixed(4);
+};
 
 const display = (input) => (answerP.textContent = input);
 const isOperator = (input) => OPERATORS.includes(input);
 
 function operate() {
 	numB = concatInput;
-	console.log(numA + " " + operator + " " + numB);
 	numA = calculate();
 	display(numA);
-	console.log(numA);
+	if (!Number.isInteger(numA)) reset(numA); // Display zero division error
 }
 
 function calculate() {
@@ -39,6 +44,16 @@ function calculate() {
 			return divide(numA, numB);
 	}
 }
+
+function reset(message) {
+	history = [];
+	[numA, numB] = [null, null];
+	equals = false;
+	display(message);
+}
+
+// Event listeners
+clearBtn.addEventListener("click", () => reset(0));
 
 equalsBtn.addEventListener("click", () => {
 	equals = true;
@@ -61,11 +76,4 @@ buttonsDiv.addEventListener("click", (e) => {
 		history = [];
 		operator = input;
 	}
-});
-
-clearBtn.addEventListener("click", () => {
-	history = [];
-	[numA, numB] = [null, null];
-	equals = false;
-	display("0");
 });
