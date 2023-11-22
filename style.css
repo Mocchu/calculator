@@ -63,10 +63,6 @@ h6 {
 }
 
 /* MY CSS */
-:root {
-	--bg-color: #121212;
-}
-
 a {
 	text-decoration: none;
 }
@@ -86,29 +82,32 @@ a:visited {
 }
 
 body {
-	background-color: var(--bg-color);
+	padding-top: 15vh;
 	font-family: "Open Sans", sans-serif;
 	height: 100vh;
 	flex-direction: column;
 	font-weight: 600;
+	color: rgba(0, 0, 0, 0.75);
 }
 
 .container {
-	height: 60%;
-	width: auto;
+	height: 30rem;
+	width: 20rem;
 	margin: 0 auto;
 	flex-direction: column;
+	box-shadow: 0 7px 10px 5px rgba(0, 0, 0, 0.233);
 }
 
 .answer-box {
 	justify-content: flex-end;
 	padding: 1em 2em;
-	background-color: white;
+	background-color: rgba(245, 245, 245, 0.719);
 	height: 7rem;
 }
 
 .answer {
 	font-size: 3.5rem;
+	overflow: hidden;
 }
 
 .buttons {
@@ -121,24 +120,36 @@ button {
 	width: 25%;
 	height: 20%;
 	border: none;
+	padding: 0;
+	background-color: rgba(243, 243, 243, 0.219);
 }
 
 button:hover {
-	opacity: 0.9;
+	background-color: rgba(243, 243, 243, 0.7);
 }
 
 button:hover:active {
-	opacity: 0.8;
+	background-color: rgba(243, 243, 243, 1);
 }
 
 .zero {
 	width: 50%;
 }
 
+.equals {
+	background-color: rgba(0, 128, 128, 0.13);
+}
+
+.equals:hover {
+	background-color: rgba(0, 128, 128, 0.17);
+}
+
 footer {
-	padding-top: 4rem;
+	padding-top: 5vh;
 }
 
 .github {
-	color: rgba(255, 255, 255, 0.7) !important;
+	color: rgba(0, 0, 0, 0.849) !important;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.151);
+	opacity: 0.3;
 }

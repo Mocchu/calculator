@@ -6,6 +6,7 @@ let numB;
 let operator;
 let input;
 let equals = false;
+let concatInput = 0;
 
 const buttonsDiv = document.querySelector(".buttons");
 const answerP = document.querySelector(".answer");
@@ -19,7 +20,7 @@ const multiply = (numA, numB) => numA * numB;
 
 const divide = (numA, numB) => {
 	if (numB == 0) return "Divisionby0";
-	return (numA / numB).toFixed(4);
+	return parseFloat((numA / numB).toFixed(4));
 };
 
 const display = (input) => (answerP.textContent = input);
@@ -48,6 +49,8 @@ function calculate() {
 function reset(message) {
 	history = [];
 	[numA, numB] = [null, null];
+	input = 0;
+	concatInput = 0;
 	equals = false;
 	display(message);
 }
