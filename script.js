@@ -19,6 +19,7 @@ const display = (input) => (answerP.textContent = input);
 const isOperator = (input) => OPERATORS.includes(input);
 
 buttonsDiv.addEventListener("click", (e) => {
+	// Create and display numbers based on user input via concatenation
 	input = e.target.textContent;
 	if (Number.isInteger(Number(input))) {
 		history.push(input);
@@ -26,24 +27,24 @@ buttonsDiv.addEventListener("click", (e) => {
 		display(concatInput);
 	} else if (isOperator(input)) {
 		history = [];
-		if (!numA) {
-			numA = Number(concatInput);
-			operator = input;
-		}
+		if (!numA) numA = Number(concatInput);
+		operator = input;
 	}
 });
 
-clearBut.addEventListener("click", () => {
-	history = [];
-	[numA, numB] = [null, null];
-	display("");
-});
-
 equalsBut.addEventListener("click", () => {
+	// Calculate when equals button is pressed
 	numB = Number(concatInput);
 	ans = calculate(operator, numA, numB);
 	display(ans);
 	numA = ans;
+});
+
+clearBut.addEventListener("click", () => {
+	// Clear display and reset variables
+	history = [];
+	[numA, numB] = [null, null];
+	display("0");
 });
 
 function calculate(operator, numA, numB) {
