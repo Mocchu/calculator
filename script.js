@@ -20,7 +20,7 @@ const multiply = (numA, numB) => numA * numB;
 
 const divide = (numA, numB) => {
 	if (numB == 0) return "div0err";
-	return parseFloat((numA / numB).toFixed(4));
+	return numA / numB.toFixed(4);
 };
 
 const display = (input) => (answerP.textContent = input);
@@ -33,7 +33,6 @@ function operate() {
 	if (!Number.isInteger(numA)) {
 		// Display zero division error
 		reset(numA);
-		display(0);
 	}
 }
 
