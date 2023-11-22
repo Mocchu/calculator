@@ -30,7 +30,11 @@ function operate() {
 	numB = concatInput;
 	numA = calculate();
 	display(numA);
-	if (!Number.isInteger(numA)) reset(numA); // Display zero division error
+	if (!Number.isInteger(numA)) {
+		// Display zero division error
+		reset(numA);
+		display(0);
+	}
 }
 
 function calculate() {
