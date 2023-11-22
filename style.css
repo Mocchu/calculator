@@ -90,6 +90,7 @@ body {
 	font-family: "Open Sans", sans-serif;
 	height: 100vh;
 	flex-direction: column;
+	font-weight: 600;
 }
 
 .container {
@@ -101,13 +102,13 @@ body {
 
 .answer-box {
 	justify-content: flex-end;
-	padding: 0.5em;
+	padding: 1em 2em;
 	background-color: white;
 	height: 7rem;
 }
 
 .answer {
-	font-size: 3rem;
+	font-size: 3.5rem;
 }
 
 .buttons {
