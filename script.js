@@ -52,6 +52,7 @@ function reset(message) {
 	input = 0;
 	concatInput = 0;
 	equals = false;
+	operator = null;
 	display(message);
 }
 
