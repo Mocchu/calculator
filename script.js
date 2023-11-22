@@ -3,6 +3,8 @@ let history = [];
 let numA;
 let numB;
 let operator;
+let input;
+let equals = false;
 
 const buttonsDiv = document.querySelector(".buttons");
 const answerP = document.querySelector(".answer");
@@ -19,8 +21,10 @@ const isOperator = (input) => OPERATORS.includes(input);
 
 function operate() {
 	numB = concatInput;
+	console.log(numA + " " + operator + " " + numB);
 	numA = calculate();
 	display(numA);
+	console.log(numA);
 }
 
 function calculate() {
@@ -37,24 +41,24 @@ function calculate() {
 }
 
 equalsBtn.addEventListener("click", () => {
+	equals = true;
 	operate();
-	operator = input;
 });
 
 buttonsDiv.addEventListener("click", (e) => {
 	input = e.target.textContent;
 	if (Number.isInteger(Number(input))) {
+		// User selected integer button
 		history.push(input);
 		concatInput = Number(history.join(""));
 		display(concatInput);
 	} else if (isOperator(input)) {
-		history = [];
+		// User selected integer button
+		if (!numA) numA = concatInput;
+		else if (equals) equals = false;
+		else operate();
 
-		if (!numA) {
-			numA = concatInput;
-		} else {
-			operate();
-		}
+		history = [];
 		operator = input;
 	}
 });
@@ -62,5 +66,6 @@ buttonsDiv.addEventListener("click", (e) => {
 clearBtn.addEventListener("click", () => {
 	history = [];
 	[numA, numB] = [null, null];
+	equals = false;
 	display("0");
 });
