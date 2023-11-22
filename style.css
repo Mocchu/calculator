@@ -93,7 +93,7 @@ body {
 }
 
 .container {
-	height: 50%;
+	height: 60%;
 	width: auto;
 	margin: 0 auto;
 	flex-direction: column;
@@ -103,6 +103,7 @@ body {
 	justify-content: flex-end;
 	padding: 0.5em;
 	background-color: white;
+	height: 7rem;
 }
 
 .answer {

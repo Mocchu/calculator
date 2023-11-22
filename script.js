@@ -1,20 +1,60 @@
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const divide = (a, b) => a / b;
-const multiply = (a, b) => a * b;
-
+const OPERATORS = ["+", "-", "/", "x"];
+let history = [];
 let numA;
 let numB;
 let operator;
 let ans;
-let input = "";
 
 const buttonsDiv = document.querySelector(".buttons");
 const answerP = document.querySelector(".answer");
+const equalsBut = document.querySelector(".equals");
+const clearBut = document.querySelector(".clear");
 
-const display = (int) => (answerP.textContent = int);
+const add = (numA, numB) => numA + numB;
+const subtract = (numA, numB) => numA - numB;
+const divide = (numA, numB) => numA / numB;
+const multiply = (numA, numB) => numA * numB;
+
+const display = (input) => (answerP.textContent = input);
+const isOperator = (input) => OPERATORS.includes(input);
 
 buttonsDiv.addEventListener("click", (e) => {
-	input += e.target.textContent;
-	display(input);
+	input = e.target.textContent;
+	if (Number.isInteger(Number(input))) {
+		history.push(input);
+		concatInput = history.join("");
+		display(concatInput);
+	} else if (isOperator(input)) {
+		history = [];
+		if (!numA) {
+			numA = Number(concatInput);
+			operator = input;
+		}
+	}
 });
+
+clearBut.addEventListener("click", () => {
+	history = [];
+	[numA, numB] = [null, null];
+	display("");
+});
+
+equalsBut.addEventListener("click", () => {
+	numB = Number(concatInput);
+	ans = calculate(operator, numA, numB);
+	display(ans);
+	numA = ans;
+});
+
+function calculate(operator, numA, numB) {
+	switch (operator) {
+		case "+":
+			return add(numA, numB);
+		case "-":
+			return subtract(numA, numB);
+		case "x":
+			return multiply(numA, numB);
+		case "/":
+			return divide(numA, numB);
+	}
+}
