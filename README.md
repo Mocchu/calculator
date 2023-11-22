@@ -1,4 +1,4 @@
-# odin-calculator
+# calculator
 
 The Odin Project - Project 4 (Capstone)
 
