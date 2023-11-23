@@ -64,18 +64,22 @@ clearBtn.addEventListener("click", () => reset(0));
 
 equalsBtn.addEventListener("click", () => {
 	equals = true;
-	operate();
+	if (!operator) {
+		reset();
+		display(0);
+	} else operate();
 });
 
 buttonsDiv.addEventListener("click", (e) => {
 	input = e.target.textContent;
-	if (Number.isInteger(Number(input))) {
+	if (Number.isInteger(Number(input)) || input === ".") {
 		// User selected integer button
 		history.push(input);
-		concatInput = Number(history.join(""));
+		concatInput = parseFloat(history.join(""));
+		console.log(concatInput);
 		display(concatInput);
 	} else if (isOperator(input)) {
-		// User selected integer button
+		// User selected operator button
 		if (!numA) numA = concatInput;
 		else if (equals) equals = false;
 		else operate();
