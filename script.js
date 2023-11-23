@@ -20,7 +20,7 @@ const multiply = (numA, numB) => numA * numB;
 
 const divide = (numA, numB) => {
 	if (numB == 0) return "div0err";
-	return numA / numB.toFixed(4);
+	return (numA / numB).toFixed(4);
 };
 
 const display = (input) => (answerP.textContent = input);
@@ -75,8 +75,11 @@ buttonsDiv.addEventListener("click", (e) => {
 	if (Number.isInteger(Number(input)) || input === ".") {
 		// User selected integer button
 		history.push(input);
-		concatInput = parseFloat(history.join(""));
-		console.log(concatInput);
+		concatInput = history.join("");
+		if (history[history.length - 1] != ".") {
+			// If decimal point entered, dont convert to int to ensure d.p is displayed
+			concatInput = Number(concatInput);
+		}
 		display(concatInput);
 	} else if (isOperator(input)) {
 		// User selected operator button
