@@ -76,14 +76,14 @@ buttonsDiv.addEventListener("click", (e) => {
 		// User selected integer type button
 		history.push(input);
 		concatInput = history.join("");
+		if (concatInput === ".") concatInput = "0.";
 
-		// If decimal point entered, dont convert to int to ensure d.p is displayed
 		if (history[history.length - 1] != ".") {
+			// dont convert to int to display d.p
 			concatInput = Number(concatInput);
 		}
 
-		// Handle multiple decimal place user error
-		if (!concatInput) concatInput = 0;
+		if (!concatInput) concatInput = 0; // Handle multiple d.p user error
 		display(concatInput);
 	} else if (isOperator(input)) {
 		// User selected operator type button
