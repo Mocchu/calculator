@@ -1,3 +1,9 @@
+// TODO
+// 3.3 + 6.6 is weird
+// 6.6 - 3.3 is weird
+// D.p button displays past history
+// Too many sig figs on decimal operations
+
 // Assignments
 const OPERATORS = ["+", "-", "/", "x"];
 let history = [];
@@ -76,7 +82,7 @@ buttonsDiv.addEventListener("click", (e) => {
 		// User selected integer type button
 		history.push(input);
 		concatInput = history.join("");
-		if (concatInput === ".") concatInput = "0.";
+		if (concatInput === ".") concatInput = "0."; // Precede solo d.p with zero
 
 		if (history[history.length - 1] != ".") {
 			// dont convert to int to display d.p
@@ -87,6 +93,7 @@ buttonsDiv.addEventListener("click", (e) => {
 		display(concatInput);
 	} else if (isOperator(input)) {
 		// User selected operator type button
+		if (concatInput[concatInput.length - 1] === ".") numA = 0;
 		if (!numA) numA = concatInput;
 		else if (equals) equals = false;
 		else operate();
