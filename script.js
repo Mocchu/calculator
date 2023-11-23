@@ -30,7 +30,7 @@ function operate() {
 	numB = concatInput;
 	numA = calculate();
 	display(numA);
-	if (!Number.isInteger(numA)) {
+	if (!(typeof numA === "number")) {
 		// Display zero division error
 		reset(numA);
 	}
@@ -73,16 +73,20 @@ equalsBtn.addEventListener("click", () => {
 buttonsDiv.addEventListener("click", (e) => {
 	input = e.target.textContent;
 	if (Number.isInteger(Number(input)) || input === ".") {
-		// User selected integer button
+		// User selected integer type button
 		history.push(input);
 		concatInput = history.join("");
+
+		// If decimal point entered, dont convert to int to ensure d.p is displayed
 		if (history[history.length - 1] != ".") {
-			// If decimal point entered, dont convert to int to ensure d.p is displayed
 			concatInput = Number(concatInput);
 		}
+
+		// Handle multiple decimal place user error
+		if (!concatInput) concatInput = 0;
 		display(concatInput);
 	} else if (isOperator(input)) {
-		// User selected operator button
+		// User selected operator type button
 		if (!numA) numA = concatInput;
 		else if (equals) equals = false;
 		else operate();
