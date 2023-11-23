@@ -3,6 +3,9 @@
 // 6.6 - 3.3 is weird
 // D.p button displays past history
 // Too many sig figs on decimal operations
+// Can't add decimal point to answer after using equals button (concatenates d.p to an old num)
+// Cant display 0 after a d.p input (but calc works)
+// Cant use negative numbers as input
 
 // Assignments
 const OPERATORS = ["+", "-", "/", "x"];
